@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ユーザー自身のデータへのアクセスを許可
+    match /words/{wordId} {
+      allow read, write: if request.auth.uid == resource.data.userId;
+    }
+
+    match /lessons/{lessonId} {
+      allow read, write: if request.auth.uid == resource.data.userId;
+    }
+
+    // 他のコレクションも同様に設定
+  }
+}
