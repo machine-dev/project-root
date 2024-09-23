@@ -5,7 +5,7 @@ const { Configuration, OpenAIApi } = require('openai');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'https://english-ba502.web.app' }));
 app.use(express.json());
 
 const configuration = new Configuration({
